@@ -1,4 +1,5 @@
 import os
+import pprint
 
 # ФАЙЛ cats.txt
 # 60b90c1c13067a15887e1ae1,Tayson,3,5          ошибка данных 4
@@ -52,5 +53,5 @@ def get_cats_info(path) -> list[dict]:
         return []
 
 os.system('cls')
-print (get_cats_info("cats.txt"))
-
+print (get_cats_info("cats.txt"))            # вывод нового списка словаря в одной строке
+pprint.pprint (get_cats_info("cats.txt"))    # вывод нового списка словаря по строчно для каждого кота
