@@ -59,7 +59,7 @@ def main():
     # python module_4_task_3 c:/install pr - их три: имя скрипта, путь и какой-то ключ
     if len(sys.argv) != 2:
         print(f"{Fore.RED}Ошибка: укажите путь к директории")
-        sys.exit(1)
+        return
 
     # преобразование строчного аргумента в путь
     path = Path(sys.argv[1])
@@ -68,10 +68,10 @@ def main():
     # на существование такого пути или это файл
     if not path.exists():       # проверка - существует указанный путь
         print(f"{Fore.RED}Ошибка: путь не существует")
-        sys.exit(1)
+        return
     elif not path.is_dir():     # проверка - указан файл
         print(f"{Fore.RED}Ошибка: указанный путь не является директорией")
-        sys.exit(1)
+        return
 
     print(f"{Fore.BLUE}Корневая директория\n{path.resolve()}\\")
     print_directory_tree(path)

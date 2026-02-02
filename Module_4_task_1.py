@@ -16,14 +16,14 @@ import os
 # Sitarama Raju - 1000      ошибка (строка не обрабатывается)
 # Никита Борисенко , 2000
 
-def total_salary(path) -> tuple[int, float]:
+def total_salary(path) -> tuple[float, float]:
     # фунция делает просчет общей зарплаты всех сотрудников и среднюю зп.
     total = 0           # сумма всех зп
     count = 0           # количество правильно обработанных сотрудников
     midl_salary = 0     # средняя зп
 
     if not path:        # проверка на пустую строку в переменной 'path'
-        print('Ви не вказали файл з данними.')
+        print('Ви не вказали файл з даними.')
         return 0, 0
 
     try:
@@ -33,11 +33,11 @@ def total_salary(path) -> tuple[int, float]:
                 line = line.strip()
                 if not line or ',' not in line:
                     # проверяет конец файла или отсутствие "запятой", чтобы не было
-                    # ошибки по любому разделителю кроме "запятой" и не увеличивать coutn
+                    # ошибки по любому разделителю кроме "запятой" и не увеличивать count
                     continue
 
                 try:
-                    salary = int (line.split(',', 1)[1])
+                    salary = float (line.split(',', 1)[1])
                     # разбивает строку по "запятой", один раз (по первому вхождению)
                     # [1] берет второй элемент списка после разделения строки.
                     # [0] это первый элемент списка до "запятой"
@@ -60,5 +60,5 @@ def total_salary(path) -> tuple[int, float]:
 
 os.system('cls')
 total, average = total_salary ('salary.txt')
-print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average:.2f}")
+print(f"Загальна сума заробітної плати: {total:.2f}, Середня заробітна плата: {average:.2f}")
 

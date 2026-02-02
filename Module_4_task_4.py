@@ -7,6 +7,9 @@ def parse_input(user_input):
 
 
 def add_contact(args:list,contacts:dict)->str:
+    if len(args) != 2:
+        return 'The "add" command requires a name and phone number.'
+
     name = args[0]
     phone = args[1]
 
@@ -20,6 +23,9 @@ def add_contact(args:list,contacts:dict)->str:
         return f'Contact added.'
 
 def change_contact(args:list,contacts:dict)->str:
+    if len(args) != 2:
+        return 'The "change" command requires a name and new phone number.'
+
     name = args[0]
     phone = args[1]
 
@@ -32,6 +38,9 @@ def change_contact(args:list,contacts:dict)->str:
         return f"Contact {name} not found"
 
 def show_phone(args:list,contacts:dict)->str:
+    if len(args) != 1:
+        return 'The "phone" command requires a name.'
+
     name = args[0]
 
     # проверка на существования контакта по имени, если да, то выводится полная информация
@@ -77,20 +86,11 @@ def main():
         elif command == 'hello':
             print ('How can I help you?')
         elif command == 'add':
-            if len(args) != 2:
-                print('The "add" command requires a name and phone number.')
-            else:
-                print(add_contact(args,contacts))
+            print(add_contact(args,contacts))
         elif command == 'change':
-            if len(args) != 2:
-                print('The "change" command requires a name and new phone number.')
-            else:
-                print(change_contact(args,contacts))
+            print(change_contact(args,contacts))
         elif command == 'phone':
-            if len(args) != 1:
-                print('The "phone" command requires a name.')
-            else:
-                print(show_phone(args,contacts))
+            print(show_phone(args,contacts))
         elif command == 'all':
             print(show_all(contacts))
         else:
